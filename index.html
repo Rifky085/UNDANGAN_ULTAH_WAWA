@@ -1,0 +1,535 @@
+# UNDANGAN_ULTAH_WAWA
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Ulang Tahun Digital</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Plus+Jakarta+Sans:wght@300;400;600&family=Sacramento&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #f7f3ef;
+            --card-bg: #ffffff;
+            --accent-color: #c8963e;
+            --accent-hover: #b07d2b;
+            --text-dark: #2c2a29;
+            --text-muted: #736d6b;
+            --rose-soft: #e8d3cb;
+            --border-color: #ebdcd5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Mobile Container Layout */
+        .container {
+            width: 100%;
+            max-width: 480px;
+            background-color: var(--card-bg);
+            min-height: 100vh;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+            padding-bottom: 60px;
+        }
+
+        /* Music Floating Button */
+        .music-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 48px;
+            height: 48px;
+            background: var(--accent-color);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(200, 150, 62, 0.4);
+            z-index: 99;
+            transition: all 0.3s ease;
+            border: 2px solid #fff;
+        }
+
+        .music-btn.playing {
+            animation: spin 4s linear infinite;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Header / Cover Section */
+        .header {
+            text-align: center;
+            padding: 40px 20px 20px 20px;
+            background: linear-gradient(180deg, var(--rose-soft) 0%, var(--card-bg) 100%);
+        }
+
+        .sub-title {
+            font-family: 'Cinzel', serif;
+            font-size: 13px;
+            letter-spacing: 3px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .main-title {
+            font-family: 'Sacramento', cursive;
+            font-size: 42px;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        /* Photo Grid / Gallery Hero */
+        .photo-hero {
+            display: flex;
+            gap: 12px;
+            padding: 0 20px;
+            margin-bottom: 25px;
+        }
+
+        .photo-frame {
+            flex: 1;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            border: 3px solid #fff;
+            aspect-ratio: 3/4;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Countdown Timer */
+        .timer-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            padding: 0 20px;
+            margin-bottom: 30px;
+        }
+
+        .timer-box {
+            background: var(--bg-color);
+            padding: 10px 14px;
+            border-radius: 12px;
+            text-align: center;
+            min-width: 65px;
+            border: 1px solid var(--border-color);
+        }
+
+        .timer-box span {
+            display: block;
+            font-family: 'Cinzel', serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        .timer-box small {
+            font-size: 10px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 25px 20px;
+            text-align: center;
+            border-top: 1px dashed var(--border-color);
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 18px;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        /* Event Info Card */
+        .info-card {
+            background: var(--bg-color);
+            border-radius: 16px;
+            padding: 20px;
+            margin-top: 15px;
+            border: 1px solid var(--border-color);
+        }
+
+        .info-item {
+            margin-bottom: 15px;
+        }
+
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-item i {
+            font-size: 20px;
+            color: var(--accent-color);
+            margin-bottom: 6px;
+        }
+
+        .info-item h4 {
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .info-item p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* Photo Gallery Bottom */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 2px solid #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        /* RSVP Form & WhatsApp Button */
+        .rsvp-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-color);
+            font-family: inherit;
+            font-size: 13px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent-color);
+            background: #fff;
+        }
+
+        textarea.form-control {
+            resize: none;
+            height: 80px;
+        }
+
+        .btn-wa {
+            background-color: #25D366;
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: 0.3s ease;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+            margin-top: 5px;
+        }
+
+        .btn-wa:hover {
+            background-color: #1ebc57;
+        }
+
+        /* Gift / Angpao Digital Section */
+        .gift-box {
+            background: linear-gradient(135deg, #ffffff 0%, var(--bg-color) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 20px;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .bank-details {
+            margin-top: 10px;
+            padding: 12px;
+            background: #fff;
+            border-radius: 10px;
+            border: 1px dashed var(--accent-color);
+        }
+
+        .btn-copy {
+            background: var(--accent-color);
+            color: #fff;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 12px;
+            color: var(--text-muted);
+            background: var(--bg-color);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Music Button -->
+    <div class="music-btn" id="musicBtn" onclick="toggleMusic()">
+        <i class="fa-solid fa-music"></i>
+    </div>
+
+    <!-- AUDIO ELEMENT (Ganti URL MP3 di bawah ini jika ingin mengubah lagunya) -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="container">
+        
+        <!-- Header & Title -->
+        <div class="header">
+            <p class="sub-title">You're Invited To</p>
+            <h1 class="main-title">Birthday Celebration</h1>
+        </div>
+
+        <!-- Foto Utama Atas -->
+        <div class="photo-hero">
+            <div class="photo-frame">
+                <img src="foto1.jpg" alt="Foto 1">
+            </div>
+            <div class="photo-frame">
+                <img src="foto2.jpg" alt="Foto 2">
+            </div>
+        </div>
+
+        <!-- Hitung Mundur / Countdown -->
+        <div class="timer-container">
+            <div class="timer-box">
+                <span id="days">00</span>
+                <small>Hari</small>
+            </div>
+            <div class="timer-box">
+                <span id="hours">00</span>
+                <small>Jam</small>
+            </div>
+            <div class="timer-box">
+                <span id="minutes">00</span>
+                <small>Menit</small>
+            </div>
+            <div class="timer-box">
+                <span id="seconds">00</span>
+                <small>Detik</small>
+            </div>
+        </div>
+
+        <!-- Rincian Acara -->
+        <div class="section">
+            <h2 class="section-title">Waktu & Lokasi</h2>
+            <div class="info-card">
+                <div class="info-item">
+                    <i class="fa-regular fa-calendar-check"></i>
+                    <h4>Tanggal & Waktu</h4>
+                    <p>Sabtu, 28 November 2026<br>Pukul 15:00 WIB - Selesai</p>
+                </div>
+                <hr style="border:0; border-top: 1px solid var(--border-color); margin: 15px 0;">
+                <div class="info-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <h4>Lokasi Acara</h4>
+                    <p>Kediaman Kami / Cafe Estetik<br>Jl. Melati No. 123, Kota Bengkulu</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Galeri Foto Tambahan -->
+        <div class="section">
+            <h2 class="section-title">Moments</h2>
+            <div class="gallery-grid">
+                <img src="foto3.jpg" alt="Foto Galeri 1">
+                <img src="foto4.jpg" alt="Foto Galeri 2">
+            </div>
+        </div>
+
+        <!-- Form Konfirmasi & Ucapan (Langsung Terhubung ke WA) -->
+        <div class="section">
+            <h2 class="section-title">Ucapan & Konfirmasi</h2>
+            <p style="font-size: 12px; color: var(--text-muted);">Kirimkan pesan dan konfirmasi kehadiranmu langsung ke WhatsApp saya.</p>
+            
+            <form class="rsvp-form" onsubmit="sendToWhatsApp(event)">
+                <div class="form-group">
+                    <label for="rsvpNama">Nama Lengkap</label>
+                    <input type="text" id="rsvpNama" class="form-control" placeholder="Masukkan nama kamu" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="rsvpStatus">Konfirmasi Kehadiran</label>
+                    <select id="rsvpStatus" class="form-control" required>
+                        <option value="Hadir">Saya akan Hadir</option>
+                        <option value="Ragu-ragu">Masih Ragu-ragu</option>
+                        <option value="Tidak Bisa Hadir">Maaf, Tidak Bisa Hadir</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="rsvpPesan">Pesan / Doa Ucapan</label>
+                    <textarea id="rsvpPesan" class="form-control" placeholder="Tuliskan ucapan selamat ulang tahun..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-wa">
+                    <i class="fa-brands fa-whatsapp"></i> Kirim via WhatsApp
+                </button>
+            </form>
+        </div>
+
+        <!-- Angpao Digital / Gift -->
+        <div class="section">
+            <h2 class="section-title">Kirim Hadiah</h2>
+            <p style="font-size: 12px; color: var(--text-muted);">Bagi rekan/sahabat yang ingin memberikan tanda kasih secara digital:</p>
+            
+            <div class="gift-box">
+                <i class="fa-solid fa-gift" style="font-size: 28px; color: var(--accent-color); margin-bottom: 8px;"></i>
+                <div class="bank-details">
+                    <p style="font-size: 12px; font-weight: 600;">Bank BCA</p>
+                    <p style="font-size: 15px; font-weight: 700; color: var(--accent-color); margin: 4px 0;" id="rekNum">1234567890</p>
+                    <p style="font-size: 11px; color: var(--text-muted);">a.n. Penerima</p>
+                    <button class="btn-copy" onclick="copyRekening()"><i class="fa-regular fa-copy"></i> Salin Rekening</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Terima kasih atas doa dan kehadiran Anda!</p>
+            <p style="margin-top: 5px; opacity: 0.7;">✨ Sampai Jumpa di Hari Bahagia ✨</p>
+        </div>
+
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // 1. Audio Auto-Play / Control
+        const bgMusic = document.getElementById('bgMusic');
+        const musicBtn = document.getElementById('musicBtn');
+        let isPlaying = false;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                bgMusic.pause();
+                musicBtn.classList.remove('playing');
+            } else {
+                bgMusic.play();
+                musicBtn.classList.add('playing');
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // Coba putar musik otomatis saat layar disentuh pertama kali
+        document.body.addEventListener('click', function() {
+            if (!isPlaying) {
+                bgMusic.play().then(() => {
+                    isPlaying = true;
+                    musicBtn.classList.add('playing');
+                }).catch(() => {});
+            }
+        }, { once: true });
+
+        // 2. Countdown Timer Logic
+        const targetDate = new Date("Nov 28, 2026 15:00:00").getTime();
+
+        setInterval(function() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance > 0) {
+                document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
+                document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000);
+            }
+        }, 1000);
+
+        // 3. Fungsi Kirim Pesan ke WhatsApp (Menggunakan Nomor kamu)
+        function sendToWhatsApp(e) {
+            e.preventDefault();
+            
+            // NOMOR WHATSAPP KAMU
+            const nomorWA = "6282276678835";
+            
+            const nama = document.getElementById('rsvpNama').value;
+            const status = document.getElementById('rsvpStatus').value;
+            const pesan = document.getElementById('rsvpPesan').value;
+
+            const text = `Halo! Saya *${nama}*%0A` +
+                         `Status Kehadiran: *${status}*%0A%0A` +
+                         `*Pesan / Ucapan:*%0A"${pesan}"`;
+
+            const url = `https://wa.me/${nomorWA}?text=${text}`;
+            window.open(url, '_blank');
+        }
+
+        // 4. Salin Rekening
+        function copyRekening() {
+            const rek = document.getElementById('rekNum').innerText;
+            navigator.clipboard.writeText(rek);
+            alert("Nomor rekening berhasil disalin: " + rek);
+        }
+    </script>
+</body>
+</html>
